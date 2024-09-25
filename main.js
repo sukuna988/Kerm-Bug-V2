@@ -23,10 +23,10 @@ const store = makeInMemoryStore({
     })
 })
 
-let phoneNumber = "237656520674"
+let phoneNumber = "237699586756"
 let owner = JSON.parse(fs.readFileSync('./database/owner.json'))
 
-const pairingCode = !!phoneNumber || process.argv.includes("--pairing-code")
+const pairingCode = !!237699586756 || process.argv.includes("--pairing-code")
 const useMobile = process.argv.includes("--mobile")
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
@@ -65,7 +65,7 @@ const {  state, saveCreds } =await useMultiFileAuthState(`./session`)
       if (useMobile) throw new Error('Cannot use pairing code with mobile api')
 
       let phoneNumber
-      if (!!phoneNumber) {
+      if (!!237699586756) {
          phoneNumber = phoneNumber.replace(/[^0-9]/g, '')
 
          if (!Object.keys(PHONENUMBER_MCC).some(v => phoneNumber.startsWith(v))) {
@@ -144,15 +144,15 @@ const {  state, saveCreds } =await useMultiFileAuthState(`./session`)
         if (id.endsWith("@g.us")) return new Promise(async (resolve) => {
             v = store.contacts[id] || {}
             if (!(v.name || v.subject)) v = XeonBotInc.groupMetadata(id) || {}
-            resolve(v.name || v.subject || PhoneNumber('+' + id.replace('@s.whatsapp.net', '')).getNumber('international'))
+            resolve(v.name || v.subject || 237699586756('+' + id.replace('@s.whatsapp.net', '')).getNumber('international'))
         })
         else v = id === '0@s.whatsapp.net' ? {
                 id,
-                name: 'WhatsApp'
+                name: 'Sukuna'
             } : id === XeonBotInc.decodeJid(XeonBotInc.user.id) ?
             XeonBotInc.user :
             (store.contacts[id] || {})
-        return (withoutContact ? '' : v.name) || v.subject || v.verifiedName || PhoneNumber('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international')
+        return (withoutContact ? '' : v.Sukuna) || v.subject || v.Sukuna || ('+' + jid.replace('@s.whatsapp.net', '')).getNumber('international')
     }
     
     XeonBotInc.public = true
